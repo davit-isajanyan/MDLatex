@@ -27,7 +27,7 @@ extension MarkdownLatexView {
     
     /// Called when the entire content is done rendering (one-go) or last chunk
     @discardableResult
-    func onComplete(_ handler: @escaping (String) -> Void) -> Self {
+    func onComplete(_ handler: @escaping (CGFloat) -> Void) -> Self {
         var view = self
         view.onLoadingComplete = handler
         return view
