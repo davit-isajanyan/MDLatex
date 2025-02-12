@@ -15,7 +15,7 @@ import WebKit
 ///   otherwise, it does a one-go injection.
 /// - Caches final HTML for repeated usage in non-animated mode.
 /// - Injects a custom font and style into the base KaTeX skeleton.
-public struct MarkdownLatexView: View {
+struct MarkdownLatexView: View {
     
     // MARK: - ViewModel
     /// Holds a WKWebView reference, caching, and theme settings.
@@ -57,12 +57,12 @@ public struct MarkdownLatexView: View {
     
     // MARK: - Internal State
     @State var katexTemplate: String = ""    // Base KaTeX skeleton, injected with custom CSS
-    @State public var webContentHeight: CGFloat = 0 // Height from the WebView
+    @State private var webContentHeight: CGFloat = 0 // Height from the WebView
     @State var currentChunkIndex: Int = 0    // For chunk-based animation
     @State var markdownChunks: [String] = []
     
     // MARK: - Callbacks
-    var onLoadingComplete: ((String) -> Void)?
+    var onLoadingComplete: ((CGFloat) -> Void)?
     var onChunkRendered: ((String, Int) -> Void)?
     
     // MARK: - Body
@@ -91,7 +91,7 @@ public struct MarkdownLatexView: View {
                                 onChunkRendered?(chunk, idx)
                             },
                             completion: {
-                                onLoadingComplete?("") // all chunks done
+                                onLoadingComplete?(self.webContentHeight) // all chunks done
                             }
                         )
                     } else {

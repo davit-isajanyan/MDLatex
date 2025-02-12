@@ -17,7 +17,7 @@ public struct MDLatex {
         theme: ThemeConfiguration = ThemeConfiguration(),
         animation: AnimationConfiguration = AnimationConfiguration(),
         width: CGFloat = UIScreen.main.bounds.width,
-        onComplete: ((String) -> Void)? = nil,
+        onComplete: ((CGFloat) -> Void)? = nil,
         onChunkRendered: ((String, Int) -> Void)? = nil
     ) -> some View {
         MarkdownLatexView(
