@@ -38,7 +38,7 @@ struct MarkdownLatexView: View {
             webConfiguration.userContentController = contentController
             
             self.webViewRef = WKWebView(frame: .zero, configuration: webConfiguration)
-            
+            self.webViewRef.setValue(false, forKey: "drawsBackground")
             // Default: no animation, black background, size=16, userInteraction=true
 //            self.animationConfig = AnimationConfiguration(isEnabled: false, chunkRenderingDuration: 0)
 //            self.themeConfig = ThemeConfiguration(
