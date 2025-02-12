@@ -57,7 +57,7 @@ struct MarkdownLatexView: View {
     
     // MARK: - Internal State
     @State var katexTemplate: String = ""    // Base KaTeX skeleton, injected with custom CSS
-    @State private var webContentHeight: CGFloat = 0 // Height from the WebView
+    @State var webContentHeight: CGFloat = 0 // Height from the WebView
     @State var currentChunkIndex: Int = 0    // For chunk-based animation
     @State var markdownChunks: [String] = []
     
