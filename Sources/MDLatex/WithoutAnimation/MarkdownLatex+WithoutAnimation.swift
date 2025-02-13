@@ -75,7 +75,9 @@ extension MarkdownLatexView {
             if let error = error {
                 print("Error injecting HTML in one-go:", error)
             } else {
-                self.onLoadingComplete?(self.webContentHeight)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    self.onLoadingComplete?(self.webContentHeight)
+                }
             }
         }
     }
