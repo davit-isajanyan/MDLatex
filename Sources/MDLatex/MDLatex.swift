@@ -19,7 +19,7 @@ public struct MDLatex {
         width: CGFloat = UIScreen.main.bounds.width,
         onComplete: ((CGFloat) -> Void)? = nil,
         onChunkRendered: ((String, Int) -> Void)? = nil,
-        renderImage: ((UIImage?) -> Void)? = nil
+        renderImage: ((UIImage) -> Void)? = nil
     ) -> some View {
         MarkdownLatexView(
             markdownContent: markdown,

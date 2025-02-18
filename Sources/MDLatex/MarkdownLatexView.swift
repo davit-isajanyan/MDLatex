@@ -63,7 +63,7 @@ struct MarkdownLatexView: View {
     // MARK: - Callbacks
     var onLoadingComplete: ((CGFloat) -> Void)?
     var onChunkRendered: ((String, Int) -> Void)?
-    var renderImageComplete: ((UIImage?) -> Void)?
+    var renderImageComplete: ((UIImage) -> Void)?
     
     // MARK: - Body
     var body: some View {

@@ -34,7 +34,7 @@ extension MarkdownLatexView {
     }
     
     @discardableResult
-    func renderImage(_ handler: @escaping (UIImage?) -> Void) -> Self {
+    func renderImage(_ handler: @escaping (UIImage) -> Void) -> Self {
         var view = self
         view.renderImageComplete = handler
         return view
