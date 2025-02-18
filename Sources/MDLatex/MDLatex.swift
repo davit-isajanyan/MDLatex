@@ -18,7 +18,8 @@ public struct MDLatex {
         animation: AnimationConfiguration = AnimationConfiguration(),
         width: CGFloat = UIScreen.main.bounds.width,
         onComplete: ((CGFloat) -> Void)? = nil,
-        onChunkRendered: ((String, Int) -> Void)? = nil
+        onChunkRendered: ((String, Int) -> Void)? = nil,
+        renderImage: ((UIImage?) -> Void)? = nil
     ) -> some View {
         MarkdownLatexView(
             markdownContent: markdown,
@@ -38,5 +39,6 @@ public struct MDLatex {
         )
         .onComplete(onComplete ?? { _ in })
         .onChunkRendered(onChunkRendered ?? { _, _ in })
+        .renderImage(renderImage ?? { _ in })
     }
 }

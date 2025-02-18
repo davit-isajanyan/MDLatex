@@ -33,6 +33,13 @@ extension MarkdownLatexView {
         return view
     }
     
+    @discardableResult
+    func renderImage(_ handler: @escaping (UIImage?) -> Void) -> Self {
+        var view = self
+        view.renderImageComplete = handler
+        return view
+    }
+    
     /// Called after each chunk for chunk-based animations
     @discardableResult
     func onChunkRendered(_ handler: @escaping (String,Int) -> Void) -> Self {

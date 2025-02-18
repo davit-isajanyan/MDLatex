@@ -83,7 +83,9 @@ struct WebView: UIViewRepresentable {
                 parent.onWebViewReady?()  // Let the parent start injecting content
             }
             // Update height once skeleton is loaded (in case it's not empty)
-            webView.evaluateJavaScript("updateHeight();")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                webView.evaluateJavaScript("updateHeight();")
+            }
         }
         
         // This handles messages from JS like {name: "contentHeight", body: <some CGFloat>}
@@ -101,6 +103,15 @@ struct WebView: UIViewRepresentable {
                     }
                 }
             }
+        }
+    }
+}
+
+extension WKWebView {
+    func renderWebImage() -> UIImage {
+        let renderer = UIGraphicsImageRenderer(size: self.frame.size)
+        return renderer.image { _ in
+            self.drawHierarchy(in: self.frame, afterScreenUpdates: true)
         }
     }
 }

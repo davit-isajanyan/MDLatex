@@ -77,6 +77,7 @@ extension MarkdownLatexView {
             } else {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
                     self.onLoadingComplete?(self.webContentHeight)
+                    self.renderImageComplete?(self.viewModel.webViewRef.renderWebImage())
                 }
             }
         }

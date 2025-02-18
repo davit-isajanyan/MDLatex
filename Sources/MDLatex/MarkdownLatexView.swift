@@ -63,6 +63,7 @@ struct MarkdownLatexView: View {
     // MARK: - Callbacks
     var onLoadingComplete: ((CGFloat) -> Void)?
     var onChunkRendered: ((String, Int) -> Void)?
+    var renderImageComplete: ((UIImage?) -> Void)?
     
     // MARK: - Body
     var body: some View {
@@ -90,7 +91,8 @@ struct MarkdownLatexView: View {
                                 onChunkRendered?(chunk, idx)
                             },
                             completion: {
-                                onLoadingComplete?(self.webContentHeight) // all chunks done
+                                onLoadingComplete?(self.webContentHeight)
+                                renderImageComplete?(self.viewModel.webViewRef.renderWebImage())
                             }
                         )
                     } else {
